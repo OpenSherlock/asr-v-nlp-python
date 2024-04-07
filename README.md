@@ -15,6 +15,7 @@ For processing paragraphs
 `pip install spacy`
 
 `pip install spacy-dbpedia-spotlight`
+## install pytorch as discussed below
 #####
 # On Silicon Macs, there may be issues installing scispacy
 # which ar typically solved with python 3.10 if you have 
