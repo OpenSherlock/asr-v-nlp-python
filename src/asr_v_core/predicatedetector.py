@@ -4,9 +4,9 @@ from scispacy.linking import EntityLinker
 from scispacy.hyponym_detector import HyponymDetector
 from scispacy.abbreviation import AbbreviationDetector
 
-from .antecedents import antecedents
-from .predicates import predicates
-from .scxspacy import processSentence
+import antecedents #import antecedents
+import predicates # import predicates
+import scxspacy #import processSentence
 
 from spacy.matcher import PhraseMatcher
 from spacy.matcher import Matcher
@@ -14,7 +14,7 @@ from spacy.matcher import Matcher
 nlp = spacy.load("en_core_web_md")
 import spacy_dbpedia_spotlight
 
-from .ner import handleSingleNerSentence
+import ner #import handleSingleNerSentence
 
 # Note: opentapioca is not all that accurate
 # plus which the repo uses the wrong api URL
@@ -34,8 +34,8 @@ suchMatcher.add("suchas", [[{"POS":"NOUN"}, {"TEXT":"such"}, {"TEXT":"as"}],
   [{"POS":"NOUN"}, {"TEXT":","}, {"TEXT":"such"}, {"TEXT":"as"}]])
 antMatcher = PhraseMatcher(nlp.vocab)
 predMatcher = PhraseMatcher(nlp.vocab)
-antPatterns = [nlp.make_doc(term) for term in antecedents]
-predPatterns = [nlp.make_doc(term) for term in predicates]
+antPatterns = [nlp.make_doc(term) for term in antecedents.antecedents]
+predPatterns = [nlp.make_doc(term) for term in predicates.predicates]
 antMatcher.add("prelist", antPatterns)
 predMatcher.add("predlist", predPatterns)
 conjMatcher = Matcher(nlp.vocab)
@@ -67,7 +67,7 @@ def handleSentence(txt):
     process a given sentence
   '''
   print(txt)
-  scinlp  = processSentence(txt, snlp, linker)
+  scinlp  = scxspacy.processSentence(txt, snlp, linker)
 
   doc = nlp(txt)
   jsn = {}
@@ -165,7 +165,7 @@ def handleSentence(txt):
     xx.append(jsn)
   print('XXX', xx)
 
-  nex = handleSingleNerSentence(json)
+  nex = ner.handleSentence(txt)
 
   return {'data':data, 'wkd':wkds,
     'nns':nnx, 'pnns':pnnx, 'vrbs':vbx,

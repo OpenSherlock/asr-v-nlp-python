@@ -1,6 +1,6 @@
 # for static testing
 
-from predicatedetector import handleSingleSentence
+import predicatedetector #import handleSingleSentence
 
 #### Data
 s1=""" 
@@ -26,5 +26,5 @@ json = {
 }
 print(json)
 
-result = handleSingleSentence(json)
+result = predicatedetector.handleSingleSentence(json)
 print(json)

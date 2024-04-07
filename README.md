@@ -15,11 +15,19 @@ For processing paragraphs
 `pip install spacy`
 
 `pip install spacy-dbpedia-spotlight`
-
+#####
+# On Silicon Macs, there may be issues installing scispacy
+# which ar typically solved with python 3.10 if you have 
+# a moro recent version - create your veenv with 3.10
+#####
 `pip install scispacy`
 
 `python -m spacy download en_core_web_md`
-
+######
+# Warning
+# what follows is a Transformer, which means it will opt for thee cuda-based Torch
+# if you do not have cuda, you need to install a CPU-based PyTorch
+#####
 `pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_scibert-0.5.4.tar.gz
 `
 
