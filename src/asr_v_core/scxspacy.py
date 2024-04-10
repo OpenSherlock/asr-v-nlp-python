@@ -1,11 +1,11 @@
 # run some sciSpaCy routines on a sentence
 
 def entity_to_json(ent):
-  result = {'cid': ent.concept_id,
-    'canonical':ent.canonical_name,
-    'aliases': ent.aliases,
-    'types': ent.types,
-    'definition': ent.definition}
+  result = {"cid": ent.concept_id,
+    "canonical":ent.canonical_name,
+    "aliases": ent.aliases,
+    "types": ent.types,
+    "definition": ent.definition}
   return result
 
 def entDef(ent, linker):
@@ -19,20 +19,20 @@ def processSentence(txt, nlp, linker):
   #gather POS list
   posx = []
   for word in doc:
-    foo = {'txt':  word.text,
-      'lemma': word.lemma_,
-      'pos': word.pos_,
-      'tag': word.tag_,
-      'dep': word.dep_}
+    foo = {"txt":  word.text,
+      "lemma": word.lemma_,
+      "pos": word.pos_,
+      "tag": word.tag_,
+      "dep": word.dep_}
     posx.append(foo)
   # hearst structures - if any
   hrstx = doc._.hearst_patterns,
   # abbreviations - if any
   abvx = []
   for abc in doc._.abbreviations:
-    abvz = {'abvr':  abc.text,
-      'strt':  abc.start,
-      'term':  abc._.long_form.text}
+    abvz = {"abvr":  abc.text,
+      "strt":  abc.start,
+      "term":  abc._.long_form.text}
     abvx.append(abvz)
   # dbpedia
   dbpx = []
@@ -42,12 +42,12 @@ def processSentence(txt, nlp, linker):
 
   entx = []
   for ent in doc.ents:
-    entz = {'name': ent.text,
-      'strt':  ent.start,
-      'umls':  entDef(ent, linker)
+    entz = {"name": ent.text,
+      "strt":  ent.start,
+      "umls":  entDef(ent, linker)
     }
     entx.append(entz)
-  return {'sentence':txt, 'pos': posx,
-    'hearst':hrstx, 'abbrev':abvx, 'dbp':dbpx,
-    'ents':entx
+  return {"sentence":txt, "pos": posx,
+    "hearst":hrstx, "abbrev":abvx, "dbp":dbpx,
+    "ents":entx
     }

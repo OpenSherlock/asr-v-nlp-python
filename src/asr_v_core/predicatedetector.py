@@ -18,15 +18,15 @@ import ner #import handleSingleNerSentence
 
 # Note: opentapioca is not all that accurate
 # plus which the repo uses the wrong api URL
-#nlx = spacy.blank('en')
-#nlx.add_pipe('opentapioca')
+#nlx = spacy.blank("en")
+#nlx.add_pipe("opentapioca")
 
 snlp = spacy.load("en_core_sci_lg")
 
 snlp.add_pipe("scispacy_linker", config={"resolve_abbreviations": True, "linker_name": "umls"})
 snlp.add_pipe("hyponym_detector", last=True, config={"extended": False})
 snlp.add_pipe("abbreviation_detector")
-snlp.add_pipe('dbpedia_spotlight')
+snlp.add_pipe("dbpedia_spotlight")
 linker = snlp.get_pipe("scispacy_linker")
 
 suchMatcher = Matcher(nlp.vocab)
@@ -87,7 +87,7 @@ def handleSentence(txt):
   suchs = []
   for mid, start, end in suchMatches:
     tok = doc[start:end]
-    jsn = {'strt': start, 'enx':end, 'txt': tok.text }
+    jsn = {"strt": start, "enx":end, "txt": tok.text }
     suchs.append(jsn)
   #Predicates
   antMatches = antMatcher(doc)
@@ -98,78 +98,78 @@ def handleSentence(txt):
   #Antecedents to predicates
   for mid, start, end in antMatches:
     tok = doc[start:end]
-    jsn = {'strt': start, 'enx':end, 'txt': tok.text }
+    jsn = {"strt": start, "enx":end, "txt": tok.text }
     ants.append(jsn)
-  print('ANTECENTS', ants)
+  print("ANTECENTS", ants)
   data.append(ants)
 
   preds = []
   for mid, start, end in predMatches:
     tok = doc[start:end]
-    jsn = {'strt': start, 'enx':end, 'txt': tok.text }
+    jsn = {"strt": start, "enx":end, "txt": tok.text }
     preds.append(jsn)
-  print('PREDICATES', preds)
+  print("PREDICATES", preds)
   data.append(preds)
-  print('DATAX', data)
+  print("DATAX", data)
   #Nouns and verbs
   nmatcher = Matcher(nlp.vocab)
   nmatcher.add("Nouns", [[{"POS": "NOUN"}]])
   nns = nmatcher(doc)
-  #print('FOO', nns)
+  #print("FOO", nns)
   nnx = []
   pnmatcher = Matcher(nlp.vocab)
   pnmatcher.add("ProperNouns", [[{"POS": "PROPN"}]])
   pnns = pnmatcher(doc)
-  #print('BAR', pnns)
+  #print("BAR", pnns)
   pnnx = []
   vmatcher = Matcher(nlp.vocab)
   vmatcher.add("Verbs", [[{"POS": "VERB"}]])
   vbs = vmatcher(doc)
   vbx = []
-  #print('BAH', vbs)
+  #print("BAH", vbs)
   for mid, start, end in nns:
     tok = doc[start]
-    jsn = {'strt': start,'txt': tok.text }
+    jsn = {"strt": start,"txt": tok.text }
     nnx.append(jsn)
- # print('NNN', nnx)
+ # print("NNN", nnx)
   for mid, start, end in pnns:
     tok = doc[start]
-    jsn = {'strt': start,'txt': tok.text }
+    jsn = {"strt": start,"txt": tok.text }
     pnnx.append(jsn)
   #print('PNN', pnnx)
   for mid, start, end in vbs:
     tok = doc[start]
-    jsn = {'strt': start,'txt': tok.text }
+    jsn = {"strt": start,"txt": tok.text }
     vbx.append(jsn)
-  #print('VRB', vbx)
+  #print("VRB", vbx)
   #conjunctions
   conjX = conjMatcher(doc)
   conjM = []
   for mid, start, end in conjX:
     tok = doc[start]
-    jsn = {'strt': start,'txt': tok.text }
+    jsn = {"strt": start,"txt": tok.text }
     conjM.append(jsn)
   #disjunctions
   disjX = disjMatcher(doc)
   disjM = []
   for mid, start, end in disjX:
     tok = doc[start]
-    jsn = {'strt': start,'txt': tok.text }
+    jsn = {"strt": start,"txt": tok.text }
     disjM.append(jsn)
 
   xX = xMatcher(doc)
   xx = []
   for mid, start, end in xX:
     tok = doc[start:end]
-    jsn = {'strt': start,'txt': tok.text }
+    jsn = {"strt": start,"txt": tok.text }
     xx.append(jsn)
-  print('XXX', xx)
+  print("XXX", xx)
 
   nex = ner.handleSentence(txt)
 
-  return {'data':data, 'wkd':wkds,
-    'nns':nnx, 'pnns':pnnx, 'vrbs':vbx,
-    'conj':conjM, 'disj':disjM, 'noms':xx, 'suchs':suchs,
-    'scispcy':scinlp, 'ner':nex}
+  return {"data":data, "wkd":wkds,
+    "nns":nnx, "pnns":pnnx, "vrbs":vbx,
+    "conj":conjM, "disj":disjM, "noms":xx, "suchs":suchs,
+    "scispcy":scinlp, "ner":nex}
 
   
