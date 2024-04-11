@@ -167,9 +167,18 @@ def handleSentence(txt):
 
   nex = ner.handleSentence(txt)
 
-  return {"data":data, "wkd":wkds,
-    "nns":nnx, "pnns":pnnx, "vrbs":vbx,
-    "conj":conjM, "disj":disjM, "noms":xx, "suchs":suchs,
-    "scispcy":scinlp, "ner":nex}
+  return {
+    "data":data, # []
+     "wkd":wkds, # []
+    "nns":nnx, # []
+    "pnns":pnnx, # []
+    "vrbs":vbx, # []
+    "conj":conjM, # []
+    "disj":disjM, # []
+    "noms":xx, # []
+    "suchs":suchs, # []
+    "scispcy":scinlp, # []
+    "ner":nex # []
+    }
 
   
