@@ -44,12 +44,12 @@ abvx = []
 
 for abc in doc._.abbreviations:
     jx = {}
-    jx['abvr'] = abc.text
-    jx['strt'] = abc.start
-    jx['term'] = abc._.long_form.text
+    jx["abvr"] = abc.text
+    jx["strt"] = abc.start
+    jx["term"] = abc._.long_form.text
     abvx.append(jx)
 jx = {}
-bigOutput['abbrev'] = abvx
+bigOutput["abbrev"] = abvx
 
 #print(abvx)
 #print('\n')
@@ -57,13 +57,13 @@ nnx = []
 xyz = []
 for ent in doc.ents:
   jx = {}
-  jx['name'] = ent.text
-  jx['strt'] = ent.start
+  jx["name"] = ent.text
+  jx["strt"] = ent.start
   for umls_ent in ent._.kb_ents:
     xyz.append(linker.kb.cui_to_entity[umls_ent[0]])
-  jx['umls'] = xyz
+  jx["umls"] = xyz
   nnx.append(jx)
-bigOutput['ents'] = nnx
+bigOutput["ents"] = nnx
 #print(nnx)
 #print('\n')
 nnxx = []
