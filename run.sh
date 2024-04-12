@@ -1,1 +1,1 @@
-uvicorn  --port 8008 asr_v_core:app
+uvicorn  --port 8008 src/asr_v_core:app

@@ -63,6 +63,7 @@ and model = en_core_sci_lg
 `pip3 install .`
 
 ## Running Python
+Install uvicorn, e.g. `sudo apt install uvicorn`
 
 `uvicorn -p 8008 asr_v_core:app`
 
