@@ -22,6 +22,10 @@ Install uvicorn, e.g. `sudo apt install uvicorn`
 
 `pip3 install starlette`
 
+`pip install simplejson`
+
+`pip3 install simplejson`
+
 `pip install spacy`
 
 `pip3 install spacy`

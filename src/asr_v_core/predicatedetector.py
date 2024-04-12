@@ -19,8 +19,9 @@ from spacy.matcher import Matcher
 nlp = spacy.load("en_core_web_md")
 import spacy_dbpedia_spotlight
 
-import ner #import handleSingleNerSentence
+#import ner #import handleSingleNerSentence
 
+from .ner import handleSentence
 # Note: opentapioca is not all that accurate
 # plus which the repo uses the wrong api URL
 #nlx = spacy.blank("en")
@@ -175,7 +176,7 @@ def handleSentence(txt):
     xx.append(jsn)
   print("XXX", xx)
 
-  nex = ner.handleSentence(txt)
+  nex = handleSentence(txt)
 
   return {
     "data":data, # []
