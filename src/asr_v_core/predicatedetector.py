@@ -52,7 +52,6 @@ def handleSentences(json):
     for a given array of sentences
     return an array of spacy and scispacy results
   '''
-  startTime = time.time()
   result = [] # array of sentence objects
   sentencearray = json.sentences
   print('AAA',sentencearray)
@@ -68,6 +67,8 @@ def handleSentence(txt):
     process a given sentence
   '''
   print(txt)
+  startTime = time.time()
+
   scinlp  = scxspacy.processSentence(txt, snlp, linker)
 
   doc = nlp(txt)
