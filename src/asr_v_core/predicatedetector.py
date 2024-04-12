@@ -5,9 +5,13 @@ from scispacy.linking import EntityLinker
 from scispacy.hyponym_detector import HyponymDetector
 from scispacy.abbreviation import AbbreviationDetector
 
-import antecedents #import antecedents
-import predicates # import predicates
-import scxspacy #import processSentence
+#import antecedents #import antecedents
+#import predicates # import predicates
+#import scxspacy #import processSentence
+from .antecedents import antecedents
+from .predicates import predicates
+from .scxspacy import processSentence
+
 
 from spacy.matcher import PhraseMatcher
 from spacy.matcher import Matcher
@@ -35,8 +39,8 @@ suchMatcher.add("suchas", [[{"POS":"NOUN"}, {"TEXT":"such"}, {"TEXT":"as"}],
   [{"POS":"NOUN"}, {"TEXT":","}, {"TEXT":"such"}, {"TEXT":"as"}]])
 antMatcher = PhraseMatcher(nlp.vocab)
 predMatcher = PhraseMatcher(nlp.vocab)
-antPatterns = [nlp.make_doc(term) for term in antecedents.antecedents]
-predPatterns = [nlp.make_doc(term) for term in predicates.predicates]
+antPatterns = [nlp.make_doc(term) for term in antecedents]
+predPatterns = [nlp.make_doc(term) for term in predicates]
 antMatcher.add("prelist", antPatterns)
 predMatcher.add("predlist", predPatterns)
 conjMatcher = Matcher(nlp.vocab)
@@ -73,7 +77,7 @@ def handleSentence(txt):
   print(txt)
   startTime = current_milli_time()
 
-  scinlp  = scxspacy.processSentence(txt, snlp, linker)
+  scinlp  = processSentence(txt, snlp, linker)
 
   doc = nlp(txt)
   jsn = {}
