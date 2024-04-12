@@ -1,5 +1,6 @@
 import spacy
 import json
+import time
 from scispacy.linking import EntityLinker
 from scispacy.hyponym_detector import HyponymDetector
 from scispacy.abbreviation import AbbreviationDetector
@@ -47,6 +48,9 @@ disjMatcher.add("DisJ", [[{"POS": "CCONJ","TEXT":"or" }]])
 xMatcher = Matcher(nlp.vocab)
 xMatcher.add("X", [[{"POS":"NOUN"}, {"TEXT":"of"}],[{"POS":"NOUN"}, {"TEXT":"that"}], [{"POS":"NOUN"}, {"TEXT":"which"}]])
 
+def current_milli_time():
+    return round(time.time() * 1000)
+
 def handleSentences(json):
   '''
     for a given array of sentences
@@ -67,7 +71,7 @@ def handleSentence(txt):
     process a given sentence
   '''
   print(txt)
-  startTime = time.time()
+  startTime = current_milli_time()
 
   scinlp  = scxspacy.processSentence(txt, snlp, linker)
 
@@ -181,7 +185,7 @@ def handleSentence(txt):
     "suchs":suchs, # []
     "scispcy":scinlp, # []
     "ner":nex,# []
-    "time":(time.time()-startTime)/1000
+    "time":(current_milli_time()-startTime)/1000
     }
 
   
