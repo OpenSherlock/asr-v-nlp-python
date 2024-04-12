@@ -1,7 +1,7 @@
 from starlette.applications import Starlette
 from starlette.responses import JSONResponse
 from starlette.routing import Route
-
+import simplejson as json
 from .predicatedetector import handleSingleSentence #handleSentences
 from .util import check_json
 print('APP starting')
@@ -15,7 +15,7 @@ async def process(request):
     print('Debug:', json)
     result = handleSingleSentence(json)
     # print('FINAL', result)
-    return JSONResponse(result)
+    return JSONResponse(json.dumps(result))
 
 routes = [
     Route('/',process, methods=['POST'])

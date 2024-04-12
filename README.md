@@ -16,6 +16,12 @@ For processing paragraphs
 `source asrcore/bin activate`
 
 ### Dependencies
+Install uvicorn, e.g. `sudo apt install uvicorn`
+
+`pip install starlette`
+
+`pip3 install starlette`
+
 `pip install spacy`
 
 `pip3 install spacy`
@@ -63,7 +69,6 @@ and model = en_core_sci_lg
 `pip3 install .`
 
 ## Running Python
-Install uvicorn, e.g. `sudo apt install uvicorn`
 
 `uvicorn -p 8008 asr_v_core:app`
 
