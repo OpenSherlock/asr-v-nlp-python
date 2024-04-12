@@ -51,7 +51,7 @@ Install uvicorn, e.g. `sudo apt install uvicorn`
 
 ######
 ## Warning
-## what follows is a Transformer, which means it will opt for thee cuda-based Torch
+## what follows is a Transformer, which means it might opt for the cuda-based Torch
 ## if you do not have cuda, you need to install a CPU-based PyTorch
 #####
 `pip install https://s3-us-west-2.amazonaws.com/ai2-s2-scispacy/releases/v0.5.4/en_core_sci_scibert-0.5.4.tar.gz`
