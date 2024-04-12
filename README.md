@@ -4,6 +4,7 @@
 
 For processing paragraphs
 ## Installation
+Navigate to `src` directory
 ### Virtual Environment
 `pip install virtualenv`
 
@@ -38,7 +39,7 @@ Install uvicorn, e.g. `sudo apt install uvicorn`
 #####
 ## On Silicon Macs, there may be issues installing scispacy
 ## which ar typically solved with python 3.10 if you have 
-##x a moro recent version - create your veenv with 3.10
+## a more recent version - create your venv with 3.10
 #####
 `pip install scispacy`
 
@@ -73,6 +74,7 @@ and model = en_core_sci_lg
 `pip3 install .`
 
 ## Running Python
+Note: booting takes a while for libraries to load.
 
 `uvicorn -p 8008 asr_v_core:app`
 
@@ -90,7 +92,11 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 INFO:     Uvicorn running on http://127.0.0.1:8008 (Press CTRL+C to quit)
 
-## Testing
+Note: if this is a remote server, you may have to modify `run.sh` with this addition:
+
+`--host 0.0.0.0`
+
+## Testing -- deprecated for now
 It is advised to run the test as described next to allow a new installation to cach needed libraries.
 
 `cd asr_v_core`
