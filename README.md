@@ -14,7 +14,7 @@ Navigate to `src` directory
 
 `python3 -m venv asrcore`
 
-`source asrcore/bin activate`
+`source asrcore/bin/activate`
 
 ### Dependencies
 Install uvicorn, e.g. `sudo apt install uvicorn`
