@@ -69,9 +69,12 @@ def handleSentences(json):
   return result
 
 def handleSingleSentence(json):
-  return handleSentence(json['text'])
+  '''
+    {id:3,text:"foo"}
+  '''
+  return handleSentence(json['id'], json['text'])
   
-def handleSentence(txt):
+def handleSentence(id, txt):
   '''
     process a given sentence
   '''
@@ -179,6 +182,7 @@ def handleSentence(txt):
   nex = handleNerSentence(txt)
 
   return {
+    "sentId":id,
     "data":data, # []
      "wkd":wkds, # []
     "nns":nnx, # []
