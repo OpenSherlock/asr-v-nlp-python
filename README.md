@@ -23,10 +23,6 @@ Install uvicorn, e.g. `sudo apt install uvicorn`
 
 `pip3 install starlette`
 
-`pip install simplejson`
-
-`pip3 install simplejson`
-
 `pip install spacy`
 
 `pip3 install spacy`
@@ -36,10 +32,9 @@ Install uvicorn, e.g. `sudo apt install uvicorn`
 
 `pip3 install spacy-dbpedia-spotlight`
 ## install pytorch as discussed below
+A useful site for installing is https://pytorch.org/get-started/locally/
 #####
-## On Silicon Macs, there may be issues installing scispacy
-## which ar typically solved with python 3.10 if you have 
-## a more recent version - create your venv with 3.10
+### On Silicon Macs, there may be issues installing scispacy which ar typically solved with python 3.10. If you have a more recent version - create your venv with 3.10
 #####
 `pip install scispacy`
 

@@ -6,11 +6,11 @@ import scispacy
 nlp = spacy.load('en_core_sci_scibert') #("en_core_web_trf") #
   
 # return array of String
-def handleSentence(txt):
+def handleNerSentence(txt):
     '''
     process a given sentence
     '''
-    print(txt)
+    print('ner',txt)
     doc = nlp(txt)
     result = []
     for entity in doc.ents:

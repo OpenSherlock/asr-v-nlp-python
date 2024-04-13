@@ -21,7 +21,7 @@ import spacy_dbpedia_spotlight
 
 #import ner #import handleSingleNerSentence
 
-from .ner import handleSentence
+from .ner import handleNerSentence
 # Note: opentapioca is not all that accurate
 # plus which the repo uses the wrong api URL
 #nlx = spacy.blank("en")
@@ -176,7 +176,7 @@ def handleSentence(txt):
     xx.append(jsn)
   print("XXX", xx)
 
-  nex = handleSentence(txt)
+  nex = handleNerSentence(txt)
 
   return {
     "data":data, # []
